@@ -1,0 +1,25 @@
+<!--
+	作者：gao_st@126.com
+	时间：2014-06-23
+	描述：
+-->
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>文件上传</title>
+</head>
+<body>
+	<input id="btn" type="button" value="上传" />
+	<div>test</div>
+	
+	<script type="text/javascript" src="../js/jquery-1.11.1.js.js" ></script>
+	<script type="text/javascript" src="file_upload.js" ></script>
+	<script>
+		$('#btn, div').upload({
+			url: 'abc.php',
+			callback: 'abc'
+		});
+	</script>
+</body>
+</html>
