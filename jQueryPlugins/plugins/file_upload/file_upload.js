@@ -7,7 +7,8 @@
 	$.fn.upload = function (opts) {
 		var defs = {
 			url: 'your_url_is_missing.php',
-			callback: 'uploadCallback'
+			callback: 'uploadCallback',
+			hName: 'tmp_upload_file_names'
 		};
 		$.extend(defs, opts);		
 		this.each(function () {
@@ -31,12 +32,12 @@
 		function create () {
 			$('<iframe name="tmp_upload_iframe" style="display: none;"></iframe>').appendTo('body');
 			$('<form method="post" enctype="multipart/form-data" action="'+defs.url+'" name="tmp_upload_form" target="tmp_upload_iframe" style="display: none;"><input name="tmp_upload_file" type="file" /></form>').appendTo('body');
-			$('<input type="hidden" name="tmp_upload_file_names" />').appendTo("body");
+			$('<input type="hidden" name="'+defs.hName+'" />').appendTo("body");
 			$('input[name=tmp_upload_file]').trigger('click');
 		}
 		
 		function uploadCallback ( url ) {
-			alert(url)
+			// alert(url)
 			var tmpNames = $('input[name=tmp_upload_file_names]'),
 				arr = [], val = tmpNames.val();
 			val = $.trim(val).length > 0 ? val + '|' + url : url;
